@@ -20,14 +20,14 @@ var checkout = new Checkout(pricingRules);
 
 checkout.Scan(item1);
 checkout.Scan(item2);
-...
 
+// etc.
 
 int price = checkout.Total();
 ```
 
 We should build some unit tests to check our implementation of this. Similar to, but more expansive than:
-```
+```c#
 [TestClass]
 public class SupermarketCheckoutTests
 {
@@ -46,8 +46,7 @@ public class SupermarketCheckoutTests
         Assert.IsTrue(true);
     }
 
-    ...
-    // multiple items scanned etc
+    // multiple items scanned etc.
 
     [TestMethod]
     public void Total_BasketScanned_TotalCorrect()
