@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketCheckout", "SupermarketCheckout\SupermarketCheckout.csproj", "{613B421E-DFF4-476B-A9AF-6F68BA8A6C62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A3AA0FDE-E0CC-4872-BC8A-FDBC3101E5A6}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketInterfaces", "SupermarketInterfaces\SupermarketInterfaces.csproj", "{FF88C40F-28AE-4699-882C-E093DCDC2CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupermarketCheckoutTests", "SupermarketCheckoutTests\SupermarketCheckoutTests.csproj", "{023654A4-4260-47D3-B73D-AC12AC9F263D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{613B421E-DFF4-476B-A9AF-6F68BA8A6C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613B421E-DFF4-476B-A9AF-6F68BA8A6C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF88C40F-28AE-4699-882C-E093DCDC2CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF88C40F-28AE-4699-882C-E093DCDC2CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{023654A4-4260-47D3-B73D-AC12AC9F263D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{023654A4-4260-47D3-B73D-AC12AC9F263D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {471847D6-AE06-40BE-B9BF-51102EB605D3}
+	EndGlobalSection
+EndGlobal
