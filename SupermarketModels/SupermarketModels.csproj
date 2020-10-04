@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF88C40F-28AE-4699-882C-E093DCDC2CCC}</ProjectGuid>
+    <ProjectGuid>{70BA0CC8-25F2-48A7-9797-D498ADCBE5EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SupermarketInterfaces</RootNamespace>
-    <AssemblyName>SupermarketInterfaces</AssemblyName>
+    <RootNamespace>SupermarketModels</RootNamespace>
+    <AssemblyName>SupermarketModels</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,15 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICheckout.cs" />
-    <Compile Include="IPricings.cs" />
+    <Compile Include="Deal.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SupermarketModels\SupermarketModels.csproj">
-      <Project>{70BA0CC8-25F2-48A7-9797-D498ADCBE5EB}</Project>
-      <Name>SupermarketModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

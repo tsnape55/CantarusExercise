@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\DealCountLessThanTwoException.cs" />
+    <Compile Include="Exceptions\DuplicateProductException.cs" />
+    <Compile Include="Exceptions\InvalidSkuException.cs" />
+    <Compile Include="Exceptions\PriceZeroOrLessException.cs" />
+    <Compile Include="Pricings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +53,11 @@
       <Project>{ff88c40f-28ae-4699-882c-e093dcdc2ccc}</Project>
       <Name>SupermarketInterfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SupermarketModels\SupermarketModels.csproj">
+      <Project>{70BA0CC8-25F2-48A7-9797-D498ADCBE5EB}</Project>
+      <Name>SupermarketModels</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

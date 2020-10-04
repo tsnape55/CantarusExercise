@@ -49,6 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDealsToPricingsTests.cs" />
+    <Compile Include="AddProductsToPricingsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +64,10 @@
     <ProjectReference Include="..\SupermarketInterfaces\SupermarketInterfaces.csproj">
       <Project>{ff88c40f-28ae-4699-882c-e093dcdc2ccc}</Project>
       <Name>SupermarketInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SupermarketModels\SupermarketModels.csproj">
+      <Project>{70BA0CC8-25F2-48A7-9797-D498ADCBE5EB}</Project>
+      <Name>SupermarketModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
