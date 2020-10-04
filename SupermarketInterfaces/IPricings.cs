@@ -1,4 +1,5 @@
 ﻿using SupermarketModels;
+using System.Collections.Generic;
 
 namespace SupermarketInterfaces
 {
@@ -23,6 +24,12 @@ namespace SupermarketInterfaces
         /// Return a Product that has been added.
         /// </summary>
         /// <param name="sku"></param>
-        Product GetProductBySku(string sku); 
+        Product GetProductBySku(string sku);
+
+        /// <summary>
+        /// Return all Deals where the product sku is present
+        /// </summary>
+        /// <param name="sku"></param>
+        IEnumerable<Deal> GetDealsBySku(string sku);
     }
 }

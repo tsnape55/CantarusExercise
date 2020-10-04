@@ -9,7 +9,7 @@
             Price = price;
         }
 
-        public string Sku { get; private set; }
-        public float Price { get; private set; }
+        public string Sku { get; }
+        public float Price { get; }
     }
 }

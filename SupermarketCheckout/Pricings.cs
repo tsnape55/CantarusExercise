@@ -64,6 +64,10 @@ namespace SupermarketCheckout
             _products.Add(new Product(sku, price));
         }
 
+        public IEnumerable<Deal> GetDealsBySku(string sku)
+        {
+            return _deals.Where(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
+        }
 
         public Product GetProductBySku(string sku) => _products.FirstOrDefault(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
     }

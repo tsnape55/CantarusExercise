@@ -2,11 +2,7 @@
 using SupermarketCheckout;
 using SupermarketCheckout.Exceptions;
 using SupermarketInterfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SupermarketCheckoutTests
 {
@@ -22,10 +18,16 @@ namespace SupermarketCheckoutTests
             // Act
             pricings.AddProduct("DIY0001", 6.99f);
             pricings.AddDeal("DIY0001", 2, 10.00f);
+            pricings.AddDeal("DIY0001", 3, 12.00f);
 
             // Assert.
-            // No exception was thrown.
-            Assert.IsTrue(true);
+
+            var deals = pricings.GetDealsBySku("DIY0001");
+
+
+            Assert.IsTrue(deals.Count() == 2);
+            Assert.IsNotNull(deals.FirstOrDefault(x => x.Count == 2 && x.Price == 10.00f));
+            Assert.IsNotNull(deals.FirstOrDefault(x => x.Count == 3 && x.Price == 12.00f));
         }
 
 
