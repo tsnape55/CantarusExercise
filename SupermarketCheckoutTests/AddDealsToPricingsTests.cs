@@ -24,7 +24,6 @@ namespace SupermarketCheckoutTests
 
             var deals = pricings.GetDealsBySku("DIY0001");
 
-
             Assert.IsTrue(deals.Count() == 2);
             Assert.IsNotNull(deals.FirstOrDefault(x => x.Count == 2 && x.Price == 10.00f));
             Assert.IsNotNull(deals.FirstOrDefault(x => x.Count == 3 && x.Price == 12.00f));
@@ -60,7 +59,5 @@ namespace SupermarketCheckoutTests
             // Assert.
             Assert.Fail();
         }
-
-
     }
 }

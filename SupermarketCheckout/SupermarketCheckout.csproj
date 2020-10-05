@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Checkout.cs" />
     <Compile Include="Exceptions\DealCountLessThanTwoException.cs" />
     <Compile Include="Exceptions\DuplicateProductException.cs" />
     <Compile Include="Exceptions\InvalidSkuException.cs" />
