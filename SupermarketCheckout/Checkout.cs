@@ -3,8 +3,6 @@ using SupermarketModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SupermarketCheckout
 {
@@ -14,10 +12,14 @@ namespace SupermarketCheckout
         private IPricings _pricings;
         private List<CheckoutLine> _lines;
 
+        public Checkout()
+        {
+            _lines = new List<CheckoutLine>();
+        }
+
         public void Configure(IPricings pricings)
         {
             _pricings = pricings;
-            _lines = new List<CheckoutLine>();
         }
 
         public void Empty()
@@ -45,7 +47,27 @@ namespace SupermarketCheckout
 
         public float Savings()
         {
-            throw new NotImplementedException();
+            var total = 0f;
+
+            foreach (var line in _lines)
+            {
+                var lineSaving = 0f;
+                var cost = LinePrice(line);
+                var deals = _pricings.GetDealsBySku(line.Sku).Where(x => x.Count >= line.Quantity);
+
+                foreach (var deal in deals)
+                {
+                    var dealSaving = cost - deal.Price;
+                    if (dealSaving > lineSaving)
+                    {
+                        lineSaving = dealSaving;
+                    }
+                }
+
+                total += lineSaving;
+            }
+
+            return total;
         }
 
         public void Scan(string sku)
@@ -67,16 +89,25 @@ namespace SupermarketCheckout
 
             foreach (var line in _lines)
             {
-                var pricing = _pricings.GetProductBySku(line.Sku);
-                if (pricing != null)
-                {
-                    total += (line.Quantity * pricing.Price);
-                }
+                total += LinePrice(line);
             }
 
             return total;
         }
 
         public float Total() => Subtotal() - Savings();
+
+
+        private float LinePrice(CheckoutLine line)
+        {
+            var price = 0f;
+            var pricing = _pricings.GetProductBySku(line.Sku);
+            if (pricing != null)
+            {
+                price = line.Quantity * pricing.Price;
+            }
+
+            return price;
+        }
     }
 }
