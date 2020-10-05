@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AddDealsToPricingsTests.cs" />
     <Compile Include="AddProductsToPricingsTests.cs" />
+    <Compile Include="CheckoutPriceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
