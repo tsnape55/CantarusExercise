@@ -9,14 +9,15 @@ namespace SupermarketCheckout
 {
     public class Pricings : IPricings
     {
-        private readonly List<Product> _products;
         private readonly List<Deal> _deals;
 
         public Pricings()
         {
-            _products = new List<Product>();
+            Products = new List<Product>();
             _deals = new List<Deal>();
         }
+
+        public List<Product> Products { get; }
 
         public void AddDeal(string sku, int count, float price)
         {
@@ -61,11 +62,11 @@ namespace SupermarketCheckout
                 throw new DuplicateProductException($"Product with the sku {existingProduct.Sku} already exists");
             }
 
-            _products.Add(new Product(sku, price));
+            Products.Add(new Product(sku, price));
         }
 
         public IEnumerable<Deal> GetDealsBySku(string sku) => _deals.Where(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
 
-        public Product GetProductBySku(string sku) => _products.FirstOrDefault(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
+        public Product GetProductBySku(string sku) => Products.FirstOrDefault(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
     }
 }

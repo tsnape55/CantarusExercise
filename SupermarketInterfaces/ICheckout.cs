@@ -1,4 +1,7 @@
-﻿namespace SupermarketInterfaces
+﻿using SupermarketModels;
+using System.Collections.Generic;
+
+namespace SupermarketInterfaces
 {
     public interface ICheckout
     {
@@ -41,5 +44,12 @@
         /// </summary>
         /// <returns></returns>
         float Total();
+
+        /// <summary>
+        /// Returns the currently scanned items
+        /// </summary>
+        /// <returns></returns>
+        List<CheckoutLine> Lines { get; }
+
     }
 }

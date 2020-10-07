@@ -31,5 +31,11 @@ namespace SupermarketInterfaces
         /// </summary>
         /// <param name="sku"></param>
         IEnumerable<Deal> GetDealsBySku(string sku);
+
+        /// <summary>
+        /// Returns the currently configured products
+        /// </summary>
+        /// <returns></returns>
+        List<Product> Products { get; }
     }
 }

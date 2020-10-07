@@ -1,4 +1,5 @@
-﻿using SupermarketInterfaces;
+﻿using SupermarketCheckout.Exceptions;
+using SupermarketInterfaces;
 using SupermarketModels;
 using System;
 using System.Collections.Generic;
@@ -10,26 +11,40 @@ namespace SupermarketCheckout
     {
 
         private IPricings _pricings;
-        private List<CheckoutLine> _lines;
+        private bool _configured;
 
         public Checkout()
         {
-            _lines = new List<CheckoutLine>();
+            Lines = new List<CheckoutLine>();
+            _configured = false;
         }
+
+        public List<CheckoutLine> Lines { get; private set; }
 
         public void Configure(IPricings pricings)
         {
+            if (pricings == null)
+            {
+                throw new CheckoutNotConfiguredException("Pricings cannot be null");
+            }
+
+            if (pricings.Products == null || !pricings.Products.Any())
+            {
+                throw new CheckoutNotConfiguredException("Pricings must have products.");
+            }
+
             _pricings = pricings;
+            _configured = true;
         }
 
         public void Empty()
         {
-            _lines = new List<CheckoutLine>();
+            Lines = new List<CheckoutLine>();
         }
 
         public void Remove(string sku)
         {
-            var lineToRemove = _lines.FirstOrDefault(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
+            var lineToRemove = Lines.FirstOrDefault(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
             if (lineToRemove == null)
             {
                 return;
@@ -41,15 +56,21 @@ namespace SupermarketCheckout
             }
             else
             {
-                _lines.Remove(lineToRemove);
+                Lines.Remove(lineToRemove);
             }
         }
 
         public float Savings()
         {
+
+            if (!_configured)
+            {
+                throw new CheckoutNotConfiguredException();
+            }
+
             var total = 0f;
 
-            foreach (var line in _lines)
+            foreach (var line in Lines)
             {
                 var lineSaving = 0f;
                 var cost = LinePrice(line);
@@ -72,14 +93,27 @@ namespace SupermarketCheckout
 
         public void Scan(string sku)
         {
-            var existingLine = _lines.FirstOrDefault(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
+
+            if (!_configured)
+            {
+                throw new CheckoutNotConfiguredException();
+            }
+
+            var inPricing = _pricings.GetProductBySku(sku) != null;
+
+            if(!inPricing)
+            {
+                throw new InvalidSkuException("A product with that sku has not been configured.");
+            }
+
+            var existingLine = Lines.FirstOrDefault(x => x.Sku.Equals(sku, StringComparison.OrdinalIgnoreCase));
             if (existingLine != null)
             {
                 existingLine.Quantity++;
             }
             else
             {
-                _lines.Add(new CheckoutLine(sku));
+                Lines.Add(new CheckoutLine(sku));
             }
         }
 
@@ -87,7 +121,7 @@ namespace SupermarketCheckout
         {
             var total = 0f;
 
-            foreach (var line in _lines)
+            foreach (var line in Lines)
             {
                 total += LinePrice(line);
             }
